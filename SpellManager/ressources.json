@@ -1,0 +1,19 @@
+﻿{
+    "classes": [
+        "Mage blanc",
+        "Mage noir",
+        "Croisé",
+        "Moine",
+        "Free-lance"
+    ],
+    "elements": [
+        "Feu",
+        "Eau",
+        "Glace",
+        "Vent",
+        "Terre",
+        "Lumière",
+        "Ténèbres",
+        "Neutre"
+    ]
+}
