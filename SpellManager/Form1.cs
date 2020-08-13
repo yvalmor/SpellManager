@@ -70,20 +70,21 @@ namespace SpellManager
                 var spell = (Spell) spells.Items[i];
 
                 int val = string.Compare(spell.Name, name, StringComparison.Ordinal);
-                
-                switch (val)
+
+                if (val == 0)
                 {
-                    case 0:
-                        spells.Items.Remove(spell);
-                        spells.Items.Insert(i,
-                            new Spell(
-                                name, element, classes, level, mana_cost, hp_cost, magical_dmg, physical_dmg));
-                        return;
-                    case int n when n > 0:
-                        spells.Items.Insert(i,
-                            new Spell(
-                                name, element, classes, level, mana_cost, hp_cost, magical_dmg, physical_dmg));
-                        return;
+                    spells.Items.Remove(spell);
+                    spells.Items.Insert(i,
+                        new Spell(
+                            name, element, classes, level, mana_cost, hp_cost, magical_dmg, physical_dmg));
+                    return;
+                }
+                if (val > 0)
+                {
+                    spells.Items.Insert(i,
+                        new Spell(
+                            name, element, classes, level, mana_cost, hp_cost, magical_dmg, physical_dmg));
+                    return;
                 }
             }
             

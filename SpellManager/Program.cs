@@ -30,7 +30,7 @@ namespace SpellManager
 
         private static void Load()
         {
-            string JsonString = File.ReadAllText("../../ressources.json");
+            string JsonString = File.ReadAllText("ressources.json");
             var Ressources = JObject.Parse(JsonString);
 
             List<string> elementList = Ressources.SelectToken("elements")?.Values<string>().ToList();
