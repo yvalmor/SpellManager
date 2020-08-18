@@ -1,14 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using SpellManager.Classes;
+using SpellManager.Properties;
 
-namespace SpellManager
+// ReSharper disable CoVariantArrayConversion
+
+namespace SpellManager.Forms
 {
-    public partial class Form1 : Form
+    public partial class Spell_form : Form
     {
         private string name;
         private string element;
@@ -19,9 +22,11 @@ namespace SpellManager
             magical_dmg, 
             physical_dmg;
         
-        public Form1()
+        public Spell_form()
         {
             InitializeComponent();
+
+            this.AcceptButton = addButton;
 
             elementBox.Items.AddRange(Program.elements);
             elementBox.SelectedItem = Program.default_element;
@@ -31,13 +36,23 @@ namespace SpellManager
             addButton.Click += AddSpell;
         }
 
+        public void Reload()
+        {
+            elementBox.Items.Clear();
+            elementBox.Items.AddRange(Program.elements);
+            elementBox.SelectedItem = Program.default_element;
+
+            Classes.Items.Clear();
+            Classes.Items.AddRange(Program.classes);
+        }
+
         private void AddSpell(object sender, EventArgs e)
         {
             name = spellNameBox.Text;
 
             if (name == "")
             {
-                AddError("name");
+                AddError("Le nom");
                 return;
             }
 
@@ -47,7 +62,7 @@ namespace SpellManager
             
             if (!Program.elements.Contains(element))
             {
-                AddError("element");
+                AddError("L'élément");
                 return;
             }
             
@@ -55,9 +70,11 @@ namespace SpellManager
             
             if (classes.Length == 0 || !CheckClasses())
             {
-                AddError("classes");
+                AddError("Les classes");
                 return;
             }
+            
+            errorLabel.Visible = false;
             
             level = Convert.ToInt32(levelBox.Text);
             mana_cost = Convert.ToInt32(manaCostBox.Text);
@@ -96,8 +113,13 @@ namespace SpellManager
         private bool CheckClasses() 
             => classes.All(s => Program.classes.Contains(s));
 
-        private void AddError(string e) =>
-            MessageBox.Show($"{e} is not correct");
+        private void AddError(string e)
+        {
+            errorLabel.Text = string.Format(
+                e != "Les classes" ? Resources.spell_error : Resources.spell_classes_error, e)
+                .ToUpper();
+            errorLabel.Visible = true;
+        }
 
         private string[] ToStringArray(ListBox.SelectedObjectCollection collection)
         {
@@ -109,8 +131,11 @@ namespace SpellManager
             return array;
         }
 
-        private void removeButton_Click(object sender, EventArgs e) =>
+        private void removeButton_Click(object sender, EventArgs e)
+        {
+            errorLabel.Visible = false;
             spells.Items.Remove(spells.SelectedItem);
+        }
 
         private void saveButton_Click(object sender, EventArgs e)
         {
@@ -123,28 +148,26 @@ namespace SpellManager
                 toSave.Add(spell.Name, spell.ToJson());
             }
 
-            SaveFileDialog choofdlog = new SaveFileDialog();
-            choofdlog.Filter = "Json Files (*.json)|*.json";
-            choofdlog.FilterIndex = 1;
+            SaveFileDialog choofdlog = new SaveFileDialog {Filter = Resources.file_filter, FilterIndex = 1};
 
             if (choofdlog.ShowDialog() == DialogResult.OK)    
             {     
                 string sFileName = choofdlog.FileName;
                 
-                System.IO.File.WriteAllText(sFileName, JsonConvert.SerializeObject(toSave, Formatting.Indented));
+                File.WriteAllText(sFileName, JsonConvert.SerializeObject(toSave, Formatting.Indented));
             }
             else
             {
-                MessageBox.Show("Save couldn't be done, please retry");
+                MessageBox.Show(Resources.save_error);
             }
         }
         
         private void loadButton_Click(object sender, EventArgs e)
         {
-            OpenFileDialog choofdlog = new OpenFileDialog();
-            choofdlog.Filter = "Json Files (*.json)|*.json";
-            choofdlog.FilterIndex = 1;
-            choofdlog.Multiselect = false;
+            OpenFileDialog choofdlog = new OpenFileDialog
+            {
+                Filter = Resources.file_filter, FilterIndex = 1, Multiselect = false
+            };
 
             if (choofdlog.ShowDialog() == DialogResult.OK)
             {
@@ -163,7 +186,7 @@ namespace SpellManager
             }
             else
             {
-                MessageBox.Show("Loading couldn't be done, please retry");
+                MessageBox.Show(Resources.load_error);
             }
         }
 
@@ -185,6 +208,18 @@ namespace SpellManager
             hpCostBox.Text = spell.Hp_cost.ToString();
             magicalDmgBox.Text = spell.Magical_dmg.ToString();
             physicalDmgBox.Text = spell.Physical_dmg.ToString();
+        }
+
+        private void élémentsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            new Element_form().Show();
+        }
+
+        private void classesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            new Classes_form().Show();
         }
     }
 }

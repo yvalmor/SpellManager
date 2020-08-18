@@ -50,17 +50,36 @@
         <Reference Include="System.Xml" />
     </ItemGroup>
     <ItemGroup>
-        <Compile Include="Form1.cs">
-            <SubType>Form</SubType>
+        <Compile Include="Classes\Ressource.cs" />
+        <Compile Include="Classes\Spell.cs" />
+        <Compile Include="Forms\Classes_form.cs">
+          <SubType>Form</SubType>
         </Compile>
-        <Compile Include="Form1.Designer.cs">
-            <DependentUpon>Form1.cs</DependentUpon>
+        <Compile Include="Forms\Classes_form.Designer.cs">
+          <DependentUpon>Classes_form.cs</DependentUpon>
+        </Compile>
+        <Compile Include="Forms\Element_form.cs">
+          <SubType>Form</SubType>
+        </Compile>
+        <Compile Include="Forms\Element_form.Designer.cs">
+          <DependentUpon>Element_form.cs</DependentUpon>
+        </Compile>
+        <Compile Include="Forms\Spell_form.cs">
+          <SubType>Form</SubType>
+        </Compile>
+        <Compile Include="Forms\Spell_form.Designer.cs">
+          <DependentUpon>Spell_form.cs</DependentUpon>
         </Compile>
         <Compile Include="Program.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
-        <Compile Include="Spell.cs" />
-        <EmbeddedResource Include="Form1.resx">
-          <DependentUpon>Form1.cs</DependentUpon>
+        <EmbeddedResource Include="Forms\Classes_form.resx">
+          <DependentUpon>Classes_form.cs</DependentUpon>
+        </EmbeddedResource>
+        <EmbeddedResource Include="Forms\Element_form.resx">
+          <DependentUpon>Element_form.cs</DependentUpon>
+        </EmbeddedResource>
+        <EmbeddedResource Include="Forms\Spell_form.resx">
+          <DependentUpon>Spell_form.cs</DependentUpon>
         </EmbeddedResource>
         <EmbeddedResource Include="Properties\Resources.resx">
             <Generator>ResXFileCodeGenerator</Generator>
@@ -86,6 +105,9 @@
         <None Include="App.config" />
     </ItemGroup>
     <ItemGroup>
+      <Content Include="Executables\Newtonsoft.Json.dll" />
+      <Content Include="Executables\Program.exe" />
+      <Content Include="Executables\Spell_manager.exe" />
       <Content Include="ressources.json" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

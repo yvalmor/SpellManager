@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace SpellManager
+namespace SpellManager.Classes
 {
     public class Spell
     {
@@ -32,7 +30,7 @@ namespace SpellManager
         public Spell(String name, JObject jObject)
         {
             Name = name;
-            Element = jObject["Element"]?.ToString();
+            Element = jObject["Ressource"]?.ToString();
 
             Classes = jObject["Classes"]?.ToObject<string[]>();
             
@@ -49,13 +47,13 @@ namespace SpellManager
         {
             var jsonData = new
             {
-                Element = this.Element,
-                Classes = this.Classes,
-                Level = this.Level,
-                Mana_cost = this.Mana_cost,
-                Hp_cost = this.Hp_cost,
-                Magical_dmg = this.Magical_dmg,
-                Physical_dmg = this.Physical_dmg
+                Element,
+                Classes,
+                Level,
+                Mana_cost,
+                Hp_cost,
+                Magical_dmg,
+                Physical_dmg
             };
 
             string data = JsonConvert.SerializeObject(jsonData);
