@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace SpellManager.Forms
+namespace SpellManager
 {
     public partial class Classes_form : Form
     {

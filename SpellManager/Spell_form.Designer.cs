@@ -1,4 +1,4 @@
-﻿namespace SpellManager.Forms
+﻿namespace SpellManager
 {
     partial class Spell_form
     {

@@ -50,36 +50,33 @@
         <Reference Include="System.Xml" />
     </ItemGroup>
     <ItemGroup>
-        <Compile Include="Classes\Ressource.cs" />
-        <Compile Include="Classes\Spell.cs" />
-        <Compile Include="Forms\Classes_form.cs">
+        <Compile Include="Classes_form.cs">
           <SubType>Form</SubType>
         </Compile>
-        <Compile Include="Forms\Classes_form.Designer.cs">
+        <Compile Include="Classes_form.Designer.cs">
           <DependentUpon>Classes_form.cs</DependentUpon>
         </Compile>
-        <Compile Include="Forms\Element_form.cs">
+        <Compile Include="Element_form.cs">
           <SubType>Form</SubType>
         </Compile>
-        <Compile Include="Forms\Element_form.Designer.cs">
+        <Compile Include="Element_form.Designer.cs">
           <DependentUpon>Element_form.cs</DependentUpon>
-        </Compile>
-        <Compile Include="Forms\Spell_form.cs">
-          <SubType>Form</SubType>
-        </Compile>
-        <Compile Include="Forms\Spell_form.Designer.cs">
-          <DependentUpon>Spell_form.cs</DependentUpon>
         </Compile>
         <Compile Include="Program.cs" />
         <Compile Include="Properties\AssemblyInfo.cs" />
-        <EmbeddedResource Include="Forms\Classes_form.resx">
+        <Compile Include="Ressource.cs" />
+        <Compile Include="Spell.cs" />
+        <Compile Include="Spell_form.cs">
+          <SubType>Form</SubType>
+        </Compile>
+        <Compile Include="Spell_form.Designer.cs">
+          <DependentUpon>Spell_form.cs</DependentUpon>
+        </Compile>
+        <EmbeddedResource Include="Classes_form.resx">
           <DependentUpon>Classes_form.cs</DependentUpon>
         </EmbeddedResource>
-        <EmbeddedResource Include="Forms\Element_form.resx">
+        <EmbeddedResource Include="Element_form.resx">
           <DependentUpon>Element_form.cs</DependentUpon>
-        </EmbeddedResource>
-        <EmbeddedResource Include="Forms\Spell_form.resx">
-          <DependentUpon>Spell_form.cs</DependentUpon>
         </EmbeddedResource>
         <EmbeddedResource Include="Properties\Resources.resx">
             <Generator>ResXFileCodeGenerator</Generator>
@@ -90,6 +87,9 @@
             <AutoGen>True</AutoGen>
             <DependentUpon>Resources.resx</DependentUpon>
         </Compile>
+        <EmbeddedResource Include="Spell_form.resx">
+          <DependentUpon>Spell_form.cs</DependentUpon>
+        </EmbeddedResource>
         <None Include="packages.config" />
         <None Include="Properties\Settings.settings">
             <Generator>SettingsSingleFileGenerator</Generator>

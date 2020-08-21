@@ -5,7 +5,6 @@ using System.Linq;
 using System.Windows.Forms;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using SpellManager.Forms;
 
 // ReSharper disable CoVariantArrayConversion
 
@@ -20,8 +19,6 @@ namespace SpellManager
             default_class;
 
         public static Spell_form SpellForm;
-        public static Element_form ElementForm;
-        public static Classes_form ClassesForm;
 
         /// <summary>
         /// The main entry point for the application.

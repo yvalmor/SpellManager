@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 
-namespace SpellManager.Forms
+namespace SpellManager
 {
     partial class Classes_form
     {

@@ -114,22 +114,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="file_filter" xml:space="preserve">
-    <value>Json Files (*.json)|*.json</value>
-  </data>
-  <data name="save_error" xml:space="preserve">
-    <value>Save couldn't be done, please retry</value>
-  </data>
-  <data name="load_error" xml:space="preserve">
-    <value>Loading couldn't be done, please retry</value>
-  </data>
-  <data name="incorrect_text" xml:space="preserve">
-    <value>{0} is not correct</value>
-  </data>
-  <data name="spell_error" xml:space="preserve">
-    <value>{0} du sort n'est pas correct</value>
-  </data>
-  <data name="spell_classes_error" xml:space="preserve">
-    <value>{0} du sort ne sont pas correctes</value>
-  </data>
 </root>

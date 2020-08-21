@@ -59,59 +59,5 @@ namespace SpellManager.Properties {
                 resourceCulture = value;
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Json Files (*.json)|*.json.
-        /// </summary>
-        internal static string file_filter {
-            get {
-                return ResourceManager.GetString("file_filter", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to {0} is not correct.
-        /// </summary>
-        internal static string incorrect_text {
-            get {
-                return ResourceManager.GetString("incorrect_text", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Loading couldn&apos;t be done, please retry.
-        /// </summary>
-        internal static string load_error {
-            get {
-                return ResourceManager.GetString("load_error", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Save couldn&apos;t be done, please retry.
-        /// </summary>
-        internal static string save_error {
-            get {
-                return ResourceManager.GetString("save_error", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to {0} du sort ne sont pas correctes.
-        /// </summary>
-        internal static string spell_classes_error {
-            get {
-                return ResourceManager.GetString("spell_classes_error", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to {0} du sort n&apos;est pas correct.
-        /// </summary>
-        internal static string spell_error {
-            get {
-                return ResourceManager.GetString("spell_error", resourceCulture);
-            }
-        }
     }
 }

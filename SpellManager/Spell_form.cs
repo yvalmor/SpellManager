@@ -4,12 +4,10 @@ using System.Linq;
 using System.Windows.Forms;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using SpellManager.Classes;
-using SpellManager.Properties;
 
 // ReSharper disable CoVariantArrayConversion
 
-namespace SpellManager.Forms
+namespace SpellManager
 {
     public partial class Spell_form : Form
     {
@@ -116,7 +114,7 @@ namespace SpellManager.Forms
         private void AddError(string e)
         {
             errorLabel.Text = string.Format(
-                e != "Les classes" ? Resources.spell_error : Resources.spell_classes_error, e)
+                e != "Les classes" ? "{0} du sort n'est pas correct" : "{0} du sort ne sont pas correctes", e)
                 .ToUpper();
             errorLabel.Visible = true;
         }
@@ -148,7 +146,7 @@ namespace SpellManager.Forms
                 toSave.Add(spell.Name, spell.ToJson());
             }
 
-            SaveFileDialog choofdlog = new SaveFileDialog {Filter = Resources.file_filter, FilterIndex = 1};
+            SaveFileDialog choofdlog = new SaveFileDialog {Filter = "Json Files (*.json)|*.json", FilterIndex = 1};
 
             if (choofdlog.ShowDialog() == DialogResult.OK)    
             {     
@@ -158,7 +156,7 @@ namespace SpellManager.Forms
             }
             else
             {
-                MessageBox.Show(Resources.save_error);
+                MessageBox.Show("Save couldn't be done, please retry");
             }
         }
         
@@ -166,7 +164,7 @@ namespace SpellManager.Forms
         {
             OpenFileDialog choofdlog = new OpenFileDialog
             {
-                Filter = Resources.file_filter, FilterIndex = 1, Multiselect = false
+                Filter = "Json Files (*.json)|*.json", FilterIndex = 1, Multiselect = false
             };
 
             if (choofdlog.ShowDialog() == DialogResult.OK)
@@ -186,7 +184,7 @@ namespace SpellManager.Forms
             }
             else
             {
-                MessageBox.Show(Resources.load_error);
+                MessageBox.Show("Loading couldn't be done, please retry");
             }
         }
 

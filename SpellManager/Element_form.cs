@@ -1,10 +1,8 @@
 ﻿using System;
-using System.ComponentModel;
 using System.Windows.Forms;
 using Newtonsoft.Json.Linq;
-using SpellManager.Classes;
 
-namespace SpellManager.Forms
+namespace SpellManager
 {
     public partial class Element_form : Form
     {

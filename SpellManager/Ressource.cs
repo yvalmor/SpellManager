@@ -1,4 +1,4 @@
-﻿namespace SpellManager.Classes
+﻿namespace SpellManager
 {
     public class Ressource
     {
